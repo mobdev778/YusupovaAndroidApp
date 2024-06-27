@@ -68,10 +68,10 @@ dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.material3)
     implementation(libs.androidx.appcompat)
     implementation(libs.dagger.dagger)
     implementation(libs.material)
+    implementation(libs.androidx.material3)
 
     kapt(libs.dagger.compiler)
 

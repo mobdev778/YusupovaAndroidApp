@@ -1,9 +1,10 @@
 plugins {
+    alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.android.library.convention.plugin)
 }
 
 android {
-    namespace = "com.github.mobdev778.yusupova.core.router.api"
+    namespace = "com.github.mobdev778.yusupova.core.design.system"
 
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -19,6 +20,7 @@ android {
     buildFeatures {
         compose = true
     }
+
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.compose.compiler.version.get()
     }
@@ -29,16 +31,15 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
+
+    implementation(project(":core:router-api"))
+    implementation(project(":features:common"))
+
     implementation(libs.androidx.material3)
     implementation(libs.androidx.compose.runtime)
-    implementation(libs.androidx.compose.ui)
-    implementation(libs.androidx.compose.foundation)
-    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.ui.tooling.preview.android)
 
     testImplementation(libs.junit)
-
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

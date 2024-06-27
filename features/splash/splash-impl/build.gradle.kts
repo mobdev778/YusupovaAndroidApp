@@ -29,14 +29,17 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:design-system"))
     implementation(project(":core:router-api"))
     implementation(project(":features:common"))
     implementation(project(":features:splash:splash-api"))
 
-    implementation(libs.androidx.compose.foundation)
+    implementation(libs.androidx.material3)
     implementation(libs.androidx.compose.runtime)
-    implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.ui.tooling.preview.android)
+    implementation(libs.androidx.compose.foundation)
+    implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.startup)
 }

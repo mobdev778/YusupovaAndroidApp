@@ -54,3 +54,4 @@ fun File.isGradleModuleDir(): Boolean {
 include(":app")
 include(*enumSubModules("core"))
 include(*enumSubModules("features"))
+include(":core:designsystem")

@@ -28,7 +28,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.compose.runtime)
     implementation(libs.androidx.startup)
-    implementation(libs.material)
+    implementation(libs.androidx.material3)
 
     testImplementation(libs.junit)
     
