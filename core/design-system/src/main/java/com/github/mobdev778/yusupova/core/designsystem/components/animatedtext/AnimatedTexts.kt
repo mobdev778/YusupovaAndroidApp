@@ -1,4 +1,4 @@
-package com.github.mobdev778.yusupova.core.designsystem.components
+package com.github.mobdev778.yusupova.core.designsystem.components.animatedtext
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -9,8 +9,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import com.github.mobdev778.yusupova.core.designsystem.rememberTypography
 
-class Texts {
-
+class AnimatedTexts {
     val Title: dsTitle = dsTitle()
     val Subtitle: dsSubtitle = dsSubtitle()
     val Label: dsLabel = dsLabel()
@@ -30,7 +29,7 @@ class Texts {
             maxLines: Int = Int.MAX_VALUE,
             minLines: Int = 1,
         ) {
-            InternalText(
+            InternalAnimatedText(
                 rememberTypography().headline3,
                 text = text,
                 modifier = modifier,
@@ -58,7 +57,7 @@ class Texts {
             maxLines: Int = Int.MAX_VALUE,
             minLines: Int = 1,
         ) {
-            InternalText(
+            InternalAnimatedText(
                 rememberTypography().headline5,
                 text = text,
                 modifier = modifier,
@@ -86,7 +85,7 @@ class Texts {
             maxLines: Int = Int.MAX_VALUE,
             minLines: Int = 1,
         ) {
-            InternalText(
+            InternalAnimatedText(
                 rememberTypography().headline6,
                 text = text,
                 modifier = modifier,
@@ -117,7 +116,7 @@ class Texts {
             maxLines: Int = Int.MAX_VALUE,
             minLines: Int = 1,
         ) {
-            InternalText(
+            InternalAnimatedText(
                 rememberTypography().subtitle1,
                 text = text,
                 modifier = modifier,
@@ -145,7 +144,7 @@ class Texts {
             maxLines: Int = Int.MAX_VALUE,
             minLines: Int = 1,
         ) {
-            InternalText(
+            InternalAnimatedText(
                 rememberTypography().subtitle2,
                 text = text,
                 modifier = modifier,
@@ -176,7 +175,7 @@ class Texts {
             maxLines: Int = Int.MAX_VALUE,
             minLines: Int = 1,
         ) {
-            InternalText(
+            InternalAnimatedText(
                 rememberTypography().body1,
                 text = text,
                 modifier = modifier,
@@ -204,7 +203,7 @@ class Texts {
             maxLines: Int = Int.MAX_VALUE,
             minLines: Int = 1,
         ) {
-            InternalText(
+            InternalAnimatedText(
                 rememberTypography().body2,
                 text = text,
                 modifier = modifier,
@@ -233,7 +232,7 @@ class Texts {
         maxLines: Int = Int.MAX_VALUE,
         minLines: Int = 1,
     ) {
-        InternalText(
+        InternalAnimatedText(
             rememberTypography().button,
             text = text,
             modifier = modifier,
@@ -261,7 +260,7 @@ class Texts {
         maxLines: Int = Int.MAX_VALUE,
         minLines: Int = 1,
     ) {
-        InternalText(
+        InternalAnimatedText(
             rememberTypography().caption,
             text = text,
             modifier = modifier,

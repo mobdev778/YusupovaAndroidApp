@@ -1,4 +1,4 @@
-package com.github.mobdev778.yusupova.core.designsystem.components
+package com.github.mobdev778.yusupova.core.designsystem.components.text
 
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.runtime.Composable

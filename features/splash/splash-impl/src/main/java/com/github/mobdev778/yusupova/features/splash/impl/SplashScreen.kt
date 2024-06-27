@@ -1,7 +1,9 @@
 package com.github.mobdev778.yusupova.features.splash.impl
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.FastOutLinearInEasing
 import androidx.compose.animation.core.MutableTransitionState
+import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
@@ -15,14 +17,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalInspectionMode
@@ -44,7 +41,7 @@ import kotlinx.coroutines.delay
 internal fun SplashScreen() {
     val router = rememberRouter()
     LaunchedEffect(Unit) {
-        delay(2000L)
+        delay(3000L)
         router?.back()
     }
     Box(
@@ -63,8 +60,12 @@ internal fun SplashScreen() {
         AnimatedVisibility(
             modifier = Modifier.align(Alignment.Center),
             visibleState = state,
-            enter = fadeIn(),
-            exit = fadeOut()
+            enter = fadeIn(
+                animationSpec = tween(durationMillis = 500, easing = FastOutLinearInEasing)
+            ),
+            exit = fadeOut(
+                animationSpec = tween(durationMillis = 500, easing = FastOutLinearInEasing)
+            )
         ) {
             Column(
                 modifier = Modifier
@@ -87,20 +88,20 @@ internal fun SplashScreen() {
                         .fillMaxWidth()
                         .padding(16.dp)
                 ) {
-                    DesignSystem.Texts.Title.Large(
+                    DesignSystem.AnimatedText.Title.Medium(
                         modifier = Modifier.fillMaxWidth(),
                         text = stringResource(id = R.string.splash_title),
                         fontStyle = FontStyle.Italic,
-                        fontFamily = FontFamily.Cursive,
+                        fontFamily = FontFamily.Serif,
                         color = DesignSystem.Colors.Text.primary,
                         textAlign = TextAlign.Center
                     )
-                    Spacer(modifier = Modifier.size(16.dp))
-                    DesignSystem.Texts.Title.Medium(
+                    Spacer(modifier = Modifier.size(48.dp))
+                    DesignSystem.Text.Title.Small(
                         modifier = Modifier.fillMaxWidth(),
                         text = stringResource(id = R.string.splash_subtitle),
                         fontStyle = FontStyle.Italic,
-                        fontFamily = FontFamily.Cursive,
+                        fontFamily = FontFamily.Serif,
                         color = DesignSystem.Colors.Text.primary,
                         textAlign = TextAlign.Center
                     )

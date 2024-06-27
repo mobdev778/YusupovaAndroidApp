@@ -14,14 +14,14 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.github.mobdev778.yusupova.core.designsystem.colors.Colors
 import com.github.mobdev778.yusupova.core.designsystem.colors.DarkColors
 import com.github.mobdev778.yusupova.core.designsystem.colors.LightColors
-import com.github.mobdev778.yusupova.core.designsystem.components.Texts
+import com.github.mobdev778.yusupova.core.designsystem.components.animatedtext.AnimatedTexts
+import com.github.mobdev778.yusupova.core.designsystem.components.text.Texts
 import com.github.mobdev778.yusupova.core.designsystem.preview.BooleanPreviewParameterProvider
 import com.github.mobdev778.yusupova.core.designsystem.typography.DefaultTypography
 import com.github.mobdev778.yusupova.core.designsystem.typography.Typography
@@ -64,7 +64,8 @@ object DesignSystem {
         @ReadOnlyComposable
         get() = LocalTypography.current
 
-    val Texts: Texts = Texts()
+    val Text: Texts = Texts()
+    val AnimatedText: AnimatedTexts = AnimatedTexts()
 }
 
 private fun getThemeColors(colors: Colors?, isDarkTheme: Boolean): Colors {
