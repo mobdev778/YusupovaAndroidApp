@@ -3,14 +3,14 @@ package com.github.mobdev778.yusupova.core.designsystem.colors
 import androidx.compose.ui.graphics.Color
 
 open class Colors(
-    val Background: gBackground,
-    val Text: gText,
+    val Background: dsBackground,
+    val Text: dsText,
 ) {
-    data class gBackground(
+    data class dsBackground(
         val primary: Color,
         val secondary: Color
     )
-    data class gText(
+    data class dsText(
         val primary: Color,
         val secondary: Color,
         val link: Color

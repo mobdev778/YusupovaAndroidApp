@@ -6,12 +6,15 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -25,6 +28,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
@@ -61,11 +66,11 @@ internal fun SplashScreen() {
             enter = fadeIn(),
             exit = fadeOut()
         ) {
-            Box(
+            Column(
                 modifier = Modifier
                     .fillMaxWidth(0.8f)
                     .fillMaxHeight(0.8f),
-                contentAlignment = Alignment.Center
+                verticalArrangement = Arrangement.Center
             ) {
                 val drawableId = when {
                     darkMode -> R.drawable.splash_dark
@@ -73,26 +78,29 @@ internal fun SplashScreen() {
                 }
                 Image(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .align(Alignment.Center),
+                        .fillMaxWidth(),
                     painter = painterResource(id = drawableId),
                     contentDescription = null
                 )
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .align(Alignment.BottomCenter)
                         .padding(16.dp)
                 ) {
-                    Text(
+                    DesignSystem.Texts.Title.Large(
                         modifier = Modifier.fillMaxWidth(),
                         text = stringResource(id = R.string.splash_title),
+                        fontStyle = FontStyle.Italic,
+                        fontFamily = FontFamily.Cursive,
                         color = DesignSystem.Colors.Text.primary,
                         textAlign = TextAlign.Center
                     )
-                    Text(
+                    Spacer(modifier = Modifier.size(16.dp))
+                    DesignSystem.Texts.Title.Medium(
                         modifier = Modifier.fillMaxWidth(),
                         text = stringResource(id = R.string.splash_subtitle),
+                        fontStyle = FontStyle.Italic,
+                        fontFamily = FontFamily.Cursive,
                         color = DesignSystem.Colors.Text.primary,
                         textAlign = TextAlign.Center
                     )

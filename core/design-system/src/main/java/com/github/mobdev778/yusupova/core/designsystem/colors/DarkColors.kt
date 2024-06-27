@@ -12,11 +12,11 @@ private val dark_cappuccino6 = Color(0xFF333537)
 private val dark_cappuccino7 = Color(0xFF151211)
 
 object DarkColors : Colors(
-    Background = gBackground(
+    Background = dsBackground(
         primary = dark_cappuccino7,
         secondary = dark_cappuccino5
     ),
-    Text = gText(
+    Text = dsText(
         primary = dark_cappuccino0,
         secondary = dark_cappuccino1,
         link = dark_cappuccino4

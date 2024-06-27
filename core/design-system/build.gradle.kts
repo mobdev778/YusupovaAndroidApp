@@ -37,6 +37,7 @@ dependencies {
 
     implementation(libs.androidx.material3)
     implementation(libs.androidx.compose.runtime)
+    implementation(libs.androidx.compose.foundation)
     implementation(libs.androidx.ui.tooling.preview.android)
 
     testImplementation(libs.junit)

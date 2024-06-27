@@ -14,16 +14,27 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.github.mobdev778.yusupova.core.designsystem.colors.Colors
 import com.github.mobdev778.yusupova.core.designsystem.colors.DarkColors
 import com.github.mobdev778.yusupova.core.designsystem.colors.LightColors
+import com.github.mobdev778.yusupova.core.designsystem.components.Texts
 import com.github.mobdev778.yusupova.core.designsystem.preview.BooleanPreviewParameterProvider
+import com.github.mobdev778.yusupova.core.designsystem.typography.DefaultTypography
+import com.github.mobdev778.yusupova.core.designsystem.typography.Typography
 
 internal val LocalColors = staticCompositionLocalOf<Colors> { LightColors }
-internal val LocalDarkMode = staticCompositionLocalOf<Boolean> { false }
+internal val LocalDarkMode = staticCompositionLocalOf { false }
+internal val LocalTypography = staticCompositionLocalOf<Typography> { DefaultTypography }
+
+@Composable
+fun rememberDarkMode(): Boolean = LocalDarkMode.current
+
+@Composable
+fun rememberTypography(): Typography = LocalTypography.current
 
 object DesignSystem {
 
@@ -31,12 +42,13 @@ object DesignSystem {
     fun Theme(
         isDarkTheme: Boolean = isSystemInDarkTheme(),
         colors: Colors? = null,
+        typography: Typography? = null,
         content: @Composable () -> Unit
     ) {
-        val themeColors = getThemeColors(colors, isDarkTheme)
         CompositionLocalProvider(
-            LocalColors provides themeColors,
-            LocalDarkMode provides isDarkTheme
+            LocalDarkMode provides isDarkTheme,
+            LocalColors provides getThemeColors(colors, isDarkTheme),
+            LocalTypography provides getTypography(typography = typography)
         ) {
             content()
         }
@@ -46,11 +58,13 @@ object DesignSystem {
         @Composable
         @ReadOnlyComposable
         get() = LocalColors.current
-}
 
-@Composable
-fun rememberDarkMode(): Boolean {
-    return LocalDarkMode.current
+    val Typography: Typography
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalTypography.current
+
+    val Texts: Texts = Texts()
 }
 
 private fun getThemeColors(colors: Colors?, isDarkTheme: Boolean): Colors {
@@ -58,6 +72,13 @@ private fun getThemeColors(colors: Colors?, isDarkTheme: Boolean): Colors {
         colors != null -> colors
         isDarkTheme -> DarkColors
         else -> LightColors
+    }
+}
+
+private fun getTypography(typography: Typography?): Typography {
+    return when {
+        typography != null -> typography
+        else -> DefaultTypography
     }
 }
 
