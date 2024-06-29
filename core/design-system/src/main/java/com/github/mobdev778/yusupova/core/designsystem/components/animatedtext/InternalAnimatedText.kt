@@ -1,14 +1,15 @@
 package com.github.mobdev778.yusupova.core.designsystem.components.animatedtext
 
-import android.content.Context
 import android.graphics.Typeface
 import android.text.Layout
 import android.text.TextPaint
 import android.util.TypedValue
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -21,6 +22,7 @@ import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.TextStyle
@@ -34,6 +36,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.github.mobdev778.yusupova.core.designsystem.DesignSystem
+import com.github.mobdev778.yusupova.core.designsystem.components.text.InternalText
 import com.github.mobdev778.yusupova.core.designsystem.preview.BooleanPreviewParameterProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
@@ -41,7 +44,6 @@ import kotlinx.coroutines.asCoroutineDispatcher
 import kotlinx.coroutines.launch
 import java.util.concurrent.Executors
 import kotlin.math.absoluteValue
-
 
 @Composable
 @Suppress("LongParameterList")
@@ -71,12 +73,35 @@ internal fun InternalAnimatedText(
     var state: InternalAnimatedTextState by remember { mutableStateOf(InternalAnimatedTextState()) }
     val alignment = textAlign?.toAlignment() ?: textStyle.textAlign.toAlignment()
 
-    val height = textPaint.textSize.spToPx()
+    var width by remember { mutableStateOf(0) }
+    var height by remember { mutableStateOf(0) }
+
+    Box(
+        modifier = modifier
+            .onGloballyPositioned { coordinates ->
+                width = coordinates.size.width
+                height = coordinates.size.height
+            }
+    ) {
+        InternalText(
+            textStyle = textStyle,
+            text = text,
+            modifier = modifier,
+            color = Color.Transparent,
+            fontStyle = fontStyle,
+            fontFamily = fontFamily,
+            textAlign = textAlign,
+            overflow = overflow,
+            softWrap = softWrap,
+            maxLines = maxLines,
+            minLines = minLines,
+        )
+    }
+
     Canvas(
         modifier
     ) {
-        val width = size.width.toInt()
-        if (!state.isInitialized() && job?.isActive != true && width > 0) {
+        if (!state.isInitialized() && job?.isActive != true && width > 0 && height > 0) {
             job = backgroundScope.launch {
                 state = state.initialize(text, width, height, textPaint, alignment)
             }

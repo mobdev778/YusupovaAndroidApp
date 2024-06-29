@@ -40,9 +40,18 @@ import kotlinx.coroutines.delay
 @Composable
 internal fun SplashScreen() {
     val router = rememberRouter()
+    val inspectionMode = LocalInspectionMode.current
+    val state = remember {
+        MutableTransitionState(inspectionMode).apply {
+            targetState = true
+        }
+    }
+    if (!state.currentState && !state.targetState) {
+        router?.back()
+    }
     LaunchedEffect(Unit) {
         delay(3000L)
-        router?.back()
+        state.targetState = false
     }
     Box(
         modifier = Modifier
@@ -51,12 +60,7 @@ internal fun SplashScreen() {
         contentAlignment = Alignment.Center
     ) {
         val darkMode = rememberDarkMode()
-        val inspectionMode = LocalInspectionMode.current
-        val state = remember {
-            MutableTransitionState(inspectionMode).apply {
-                targetState = true
-            }
-        }
+
         AnimatedVisibility(
             modifier = Modifier.align(Alignment.Center),
             visibleState = state,
@@ -93,16 +97,16 @@ internal fun SplashScreen() {
                         text = stringResource(id = R.string.splash_title),
                         fontStyle = FontStyle.Italic,
                         fontFamily = FontFamily.Serif,
-                        color = DesignSystem.Colors.Text.primary,
+                        color = DesignSystem.Colors.Text.primary.copy(alpha = 0.8f),
                         textAlign = TextAlign.Center
                     )
-                    Spacer(modifier = Modifier.size(48.dp))
-                    DesignSystem.Text.Title.Small(
+                    Spacer(modifier = Modifier.size(32.dp))
+                    DesignSystem.AnimatedText.Title.Small(
                         modifier = Modifier.fillMaxWidth(),
                         text = stringResource(id = R.string.splash_subtitle),
                         fontStyle = FontStyle.Italic,
                         fontFamily = FontFamily.Serif,
-                        color = DesignSystem.Colors.Text.primary,
+                        color = DesignSystem.Colors.Text.primary.copy(alpha = 0.8f),
                         textAlign = TextAlign.Center
                     )
                 }

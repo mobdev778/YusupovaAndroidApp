@@ -30,6 +30,7 @@ android {
 
 dependencies {
     implementation(project(":core:router-api"))
+    implementation(project(":core:design-system"))
     implementation(project(":features:common"))
     implementation(project(":features:main:main-api"))
 

@@ -74,7 +74,6 @@ internal class FigureBuilder {
             val bottom = layout.getLineBottom(lineIndex).coerceAtMost(height)
             val right = (left.toInt() + letterWidth).coerceAtMost(width)
 
-
             val letterFigures = calculateFigures(
                 bitmapPixels, width,
                 left.toInt(), top, right - left.toInt(), bottom - top,
