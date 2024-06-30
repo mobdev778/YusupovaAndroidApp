@@ -4,13 +4,13 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.ComponentActivity
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
 import com.github.mobdev778.yusupova.app.di.component.MainComponent
 import com.github.mobdev778.yusupova.core.compose.observe
 import com.github.mobdev778.yusupova.core.router.api.ScreenId
 import com.github.mobdev778.yusupova.core.router.api.compose.RootRouterScreen
 import com.github.mobdev778.yusupova.features.splash.api.SplashScreenId
 import com.github.mobdev778.yusupova.core.designsystem.DesignSystem
+import com.github.mobdev778.yusupova.features.common.viewModel.viewModel
 import com.github.mobdev778.yusupova.features.main.api.MainScreenId
 
 class MainActivity : ComponentActivity() {
@@ -24,7 +24,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             DesignSystem.Theme {
-                val viewModel = remember {
+                val viewModel: MainViewModel by viewModel {
                     viewModelFactory.create()
                 }
                 RootRouterScreen { router ->
