@@ -28,17 +28,21 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:router-api"))
+    implementation(project(":core:domain"))
+    implementation(project(":features:common"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
-    implementation(project(":core:router-api"))
+    implementation(libs.retrofit.retrofit)
+    implementation(libs.androidx.startup)
+    implementation(project(":core:network"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

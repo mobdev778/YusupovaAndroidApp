@@ -8,17 +8,17 @@ import com.github.mobdev778.yusupova.features.common.viewModel.emit
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 
-internal class MainViewModel @AssistedInject constructor() : ViewModel() {
+class MainViewModel @AssistedInject constructor() : ViewModel() {
 
     @AssistedFactory
-    internal interface Factory : ViewModelProvider.Factory {
+    interface Factory : ViewModelProvider.Factory {
 
         fun create(): MainViewModel
     }
 
-    val commands = CommandFlow<MainCommand>(viewModelScope)
+    internal val commands = CommandFlow<MainCommand>(viewModelScope)
 
-    fun onEvent(event: MainUiEvent) {
+    internal fun onEvent(event: MainUiEvent) {
         when (event) {
             MainUiEvent.OnStarted -> {
                 commands emit MainCommand.LaunchSplashScreen

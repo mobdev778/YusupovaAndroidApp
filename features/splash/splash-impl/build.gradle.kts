@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.library.convention.plugin)
+    id(libs.plugins.kotlin.kapt.get().pluginId)
 }
 
 android {
@@ -30,10 +31,15 @@ android {
 
 dependencies {
     implementation(project(":core:design-system"))
+    implementation(project(":core:domain"))
     implementation(project(":core:router-api"))
     implementation(project(":features:common"))
     implementation(project(":features:splash:splash-api"))
 
+    implementation(libs.dagger.dagger)
+    kapt(libs.dagger.compiler)
+
+    implementation(libs.androidx.lifecycle.viewmodel.android)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.compose.runtime)
     implementation(libs.androidx.lifecycle.runtime.compose)
