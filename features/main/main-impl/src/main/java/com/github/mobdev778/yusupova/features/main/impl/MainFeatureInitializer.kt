@@ -14,4 +14,6 @@ class MainFeatureInitializer : BaseFeatureInitializer<Unit>(MainDependencies::cl
             MainScreen()
         }
     }
+
+    override fun dependencies(): MutableList<Class<out Initializer<*>>> = mutableListOf()
 }
