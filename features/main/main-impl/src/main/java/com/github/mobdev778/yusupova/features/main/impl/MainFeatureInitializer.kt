@@ -15,5 +15,9 @@ class MainFeatureInitializer : BaseFeatureInitializer<Unit>(MainDependencies::cl
         }
     }
 
-    override fun dependencies(): MutableList<Class<out Initializer<*>>> = mutableListOf()
+    companion object {
+        init {
+            register(MainFeatureInitializer::class.java)
+        }
+    }
 }

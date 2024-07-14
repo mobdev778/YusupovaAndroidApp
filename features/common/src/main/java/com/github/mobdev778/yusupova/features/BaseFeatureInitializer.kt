@@ -8,11 +8,6 @@ abstract class BaseFeatureInitializer<T>(
     private val clazz: Class<out FeatureDependency>? = null
 ) : Initializer<T> {
 
-    init {
-        Log.d(TAG, "init(${javaClass.name})")
-        register(this::class.java)
-    }
-
     override fun dependencies(): MutableList<Class<out Initializer<*>>> {
         if (clazz != null) {
             Log.d(TAG, "Finding initializer for ${javaClass.name}")

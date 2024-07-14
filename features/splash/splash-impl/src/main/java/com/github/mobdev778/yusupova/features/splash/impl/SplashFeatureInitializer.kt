@@ -14,4 +14,10 @@ class SplashFeatureInitializer : BaseFeatureInitializer<Unit>(SplashDependencies
             SplashScreen()
         }
     }
+
+    companion object {
+        init {
+            register(SplashFeatureInitializer::class.java)
+        }
+    }
 }

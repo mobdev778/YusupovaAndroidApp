@@ -26,4 +26,10 @@ class MainAppInitializer : BaseFeatureInitializer<AppComponent>(),
         DependenciesRegistry.addDependency(SplashDependencies::class, appComponent)
         return appComponent
     }
+
+    companion object {
+        init {
+            register(MainAppInitializer::class.java)
+        }
+    }
 }
