@@ -20,7 +20,9 @@ class MainAppInitializer : BaseFeatureInitializer<AppComponent>(),
     }
 
     override fun create(context: Context): AppComponent {
-        appComponent = AppComponent.factory().create(context.applicationContext as Application)
+        appComponent = AppComponent.factory().create(
+            context.applicationContext as Application
+        )
         DependenciesRegistry.addDependency(SplashDependencies::class, appComponent)
         return appComponent
     }

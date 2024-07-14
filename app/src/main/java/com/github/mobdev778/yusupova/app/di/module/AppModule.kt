@@ -12,18 +12,21 @@ internal interface AppModule {
     companion object {
 
         @Provides
+        @JvmStatic
         fun provideAppLocale(): AppLocale {
             return AppLocale.RU
         }
 
         @Provides
+        @JvmStatic
         fun provideServerAddress(): ServerAddress {
             return ServerAddress(
-                "https://raw.githubusercontent.com/mobdev778/yusupova-server/master/"
+                "https://github.com/mobdev778/yusupova-server/raw/master/"
             )
         }
 
         @Provides
+        @JvmStatic
         fun provideNetworkComponent(
             appLocale: AppLocale,
             serverAddress: ServerAddress

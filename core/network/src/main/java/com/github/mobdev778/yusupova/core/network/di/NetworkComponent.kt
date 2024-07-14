@@ -28,7 +28,7 @@ interface NetworkComponent {
 
     companion object {
 
-        fun factory(): NetworkComponent.Factory {
+        fun factory(): Factory {
             return DaggerNetworkComponent.factory()
         }
     }

@@ -1,7 +1,6 @@
 package com.github.mobdev778.yusupova.features.splash.impl.domain
 
-import com.github.mobdev778.yusupova.features.splash.impl.repository.RemoteVersesRepository
-import kotlinx.coroutines.delay
+import com.github.mobdev778.yusupova.features.splash.impl.data.repository.RemoteVersesRepository
 import javax.inject.Inject
 
 internal class UpdateVersesUseCaseImpl @Inject constructor(
@@ -9,6 +8,6 @@ internal class UpdateVersesUseCaseImpl @Inject constructor(
 ): UpdateVersesUseCase {
 
     override suspend fun invoke() {
-        remoteVersesRepository.loadVerses()
+        val verses = remoteVersesRepository.loadVerses()
     }
 }

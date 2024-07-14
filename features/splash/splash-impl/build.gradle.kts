@@ -32,9 +32,13 @@ android {
 dependencies {
     implementation(project(":core:design-system"))
     implementation(project(":core:domain"))
+    implementation(project(":core:network"))
     implementation(project(":core:router-api"))
     implementation(project(":features:common"))
     implementation(project(":features:splash:splash-api"))
+
+    implementation(libs.moshi.kotlin)
+    implementation(libs.retrofit.retrofit)
 
     implementation(libs.dagger.dagger)
     kapt(libs.dagger.compiler)
